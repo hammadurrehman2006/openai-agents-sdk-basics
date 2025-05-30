@@ -1,5 +1,5 @@
 [project]
-name = "chainlit-project"
+name = "chainlit_ai_assistan"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
