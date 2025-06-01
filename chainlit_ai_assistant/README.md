@@ -27,42 +27,63 @@ Welcome to **Hammad ur Rehman's AI Assistant**, an intelligent conversational ap
 ├── .env               # Contains GEMINI\_API\_KEY
 └── README.md
 
+## Setup and Run with `uv`
 
-## 🔧 Setup Instructions
+[uv](https://github.com/astral-sh/uv) is a fast Python package installer and resolver, written in Rust.
 
-1. **Clone the repository**
+1.  **Check for `uv` Installation**:
+    Open your terminal and type `uv --version`. If it's installed, you'll see the version number. Otherwise, you need to install it.
 
-   ```bash
-   git clone https://github.com/yourusername/ai-assistant.git
-   cd ai-assistant
-````
+2.  **Install `uv`** (if not already installed):
+    You can install `uv` using pip, or by following the instructions on the [official `uv` installation guide](https://github.com/astral-sh/uv#installation).
+    ```bash
+    # Example using pip (ensure pip is available)
+    pip install uv
+    ```
 
-2. **Install dependencies**
+3.  **Clone the Repository (if you haven't already)**:
+    ```bash
+    git clone <repository_url> # Replace <repository_url> with the actual URL
+    cd chainlit_ai_assistant
+    ```
 
-   Create a virtual environment and install the required packages:
+4.  **Navigate to the Project Directory**:
+    Ensure you are in the `chainlit_ai_assistant` directory. (This step might be redundant if you just cloned and cd'd).
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+5.  **Set up your `.env` file**:
+    Create a `.env` file in the project root by copying the example and add your Google Gemini API key:
+    ```bash
+    cp .env.example .env
+    # Now edit .env and add your GEMINI_API_KEY
+    ```
+    The `.env` file should look like this:
+    ```env
+    GEMINI_API_KEY=your_google_gemini_api_key
+    ```
 
-3. **Set up your `.env` file**
+6.  **Create a Virtual Environment and Install Dependencies**:
+    `uv` will create a virtual environment in the `.venv` directory and install dependencies from the `requirements.txt` file (as this project uses it, and `uv.lock` if present).
+    ```bash
+    uv venv  # Create the virtual environment
+    uv sync  # Install dependencies from requirements.txt (or uv.lock)
+    ```
+    If you prefer to activate the virtual environment explicitly before syncing (optional):
+    ```bash
+    uv venv
+    source .venv/bin/activate  # On Linux/macOS
+    # For Windows (Command Prompt): .venv\Scripts\activate.bat
+    # For Windows (PowerShell): .venv\Scripts\Activate.ps1
+    uv sync
+    ```
+    *Note: This project uses a `requirements.txt` file. `uv sync` will use this file to install dependencies if a `pyproject.toml` is not present or not configured for project dependencies.*
 
-   Create a `.env` file in the root directory and add your Google Gemini API key:
+7.  **Run the App with `uv`**:
+    Once the dependencies are installed (and the virtual environment is active, if you activated it manually), run the Chainlit app using `uv`.
+    ```bash
+    uv run chainlit run main.py
+    ```
 
-   ```env
-   GEMINI_API_KEY=your_google_gemini_api_key
-   ```
-
-4. **Run the app**
-
-   Start the Chainlit app:
-
-   ```bash
-   chainlit run main.py
-   ```
-
-5. **Access the Assistant**
-
+8. **Access the Assistant**:
    Visit [http://localhost:8000](http://localhost:8000) in your browser.
 
 ## 💡 How It Works
